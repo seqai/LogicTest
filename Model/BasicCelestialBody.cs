@@ -16,6 +16,6 @@
 
         public string Name { get; }
         public double Mass { get; }
-        public string Picture { get; }
+        public string Picture { get; } = null!;
     }
 }

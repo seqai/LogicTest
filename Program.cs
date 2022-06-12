@@ -77,7 +77,7 @@ var system = new Star("Sun", 0, new IOrbit<Planet>[]
 });
 
 
-var delay = 150;
+var delay = 100;
 var colonizationJournal = new List<string>();
 
 var speciesName = "";
@@ -127,7 +127,7 @@ var colonies = colonizers.Colonize(system).ToList();
 foreach (var (record, id) in colonizationJournal.Select((x, i) => (x, i + 1)))
 {
     Console.WriteLine($"Record {id}:\t{record}");
-    await Task.Delay(100);
+    await Task.Delay(delay);
 }
 
 Console.WriteLine();

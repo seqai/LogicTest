@@ -30,14 +30,14 @@ internal class Colonizers : ITerraformer
         }
         else
         {
-            _journal($"{celestialBody.Name} can't sustain life. {Species} colonists continue their space travel");
+            _journal($"{celestialBody.Name} can't sustain life. {Species} colonists continue their space travel.");
         }
 
         if (celestialBody is IOrbitalSystem<ICelestialBody> orbitalSystem && orbitalSystem.Satellites.Any())
         {
             foreach (var colony in orbitalSystem.Satellites.OrderBy(x => x.OrbitalPeriod).SelectMany(x =>
                      {
-                         _journal($"Found a satellite of {celestialBody.Name}, {x.OrbitingBody.Name} with a mean of distance {x.MeanDistance/1e6:F}M km and an orbital period of {x.OrbitalPeriod:F} days");
+                         _journal($"Found a satellite of {celestialBody.Name}, {x.OrbitingBody.Name} with a mean of distance {x.MeanDistance/1e6:F}M km and an orbital period of {x.OrbitalPeriod:F} days.");
                          return Colonize(x.OrbitingBody);
                      }))
             {
@@ -60,7 +60,7 @@ internal class Colonizers : ITerraformer
         }
         else
         {
-            _journal($"{colonizableEntity.Name} does not seem to have any other species who can object {Species} colonization");
+            _journal($"{colonizableEntity.Name} does not seem to have any other species who can object {Species} colonization.");
         }
 
         if (!colonizableEntity.ReadyForColonization)
@@ -72,10 +72,10 @@ internal class Colonizers : ITerraformer
             {
                 var result = terraformable.Terraform(this);
                 _journal(
-                    $"{Species} attempted to terraform {colonizableEntity.Name} and {(result ? "succeeded" : "failed")}");
+                    $"{Species} attempted to terraform {colonizableEntity.Name} and {(result ? "succeeded" : "failed")}.");
                 if (!result)
                 {
-                    _journal( $"After failed terraformation attempt {Species} colonists have no choice but to leave {colonizableEntity.Name}");
+                    _journal( $"After failed terraformation attempt {Species} colonists have no choice but to leave {colonizableEntity.Name}.");
                     return Array.Empty<Colony>();
                 }
             }
@@ -101,7 +101,7 @@ internal class Colonizers : ITerraformer
         }
 
         var colony = colonies.First();
-        _journal( $"{Species} found a new colony named {colony.Name} on {colonizableEntity.Name}");
+        _journal( $"{Species} found a new colony named {colony.Name} on {colonizableEntity.Name}.");
         _colonyIndex++;
         return colonies;
     }
